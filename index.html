@@ -46,11 +46,14 @@
     }
 
     .card {
+      display: block;
       background: white;
       border-radius: 15px;
       padding: 15px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.08);
       transition: 0.3s;
+      text-decoration: none;
+      color: inherit;
     }
 
     .card:hover {
@@ -61,6 +64,7 @@
       height: 180px;
       overflow: hidden;
       border-radius: 10px;
+      margin-bottom: 10px;
     }
 
     .image img {
@@ -69,34 +73,12 @@
       object-fit: cover;
     }
 
-    .btn-product {
-      display: inline-block;
-      margin-top: 10px;
-      background: #25D366;
-      color: white;
-      padding: 8px 15px;
-      border-radius: 20px;
-      text-decoration: none;
-      font-size: 14px;
-    }
-
-    .gallery {
-      display: flex;
-      gap: 10px;
-      overflow-x: auto;
-      margin-bottom: 40px;
-    }
-
-    .gallery img, .gallery video {
-      height: 150px;
-      border-radius: 10px;
-    }
-
     .price-list {
       background: white;
       padding: 20px;
       border-radius: 15px;
       margin-bottom: 40px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     }
 
     .price-item {
@@ -108,15 +90,96 @@
 
     .cta {
       text-align: center;
+      margin-bottom: 40px;
     }
 
-    .btn-main {
+    .btn-main, .btn-modal {
       background: #25D366;
       color: white;
       padding: 15px 25px;
       border-radius: 30px;
       text-decoration: none;
       font-weight: bold;
+      display: inline-block;
+      margin-top: 15px;
+    }
+
+    /* MODAL */
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      display: none;
+      z-index: 999;
+      padding: 20px;
+    }
+
+    .modal:target {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content {
+      background: white;
+      width: 100%;
+      max-width: 500px;
+      padding: 20px;
+      border-radius: 15px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+
+    .modal-content img {
+      width: 100%;
+      height: auto;
+      max-height: 80vh;
+      object-fit: contain;
+      border-radius: 12px;
+      margin-bottom: 15px;
+      background: #000;
+      cursor: zoom-in;
+    }
+
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 15px;
+      font-size: 28px;
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+
+    /* FULLSCREEN */
+    .fullscreen {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.95);
+      display: none;
+      z-index: 2000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .fullscreen:target {
+      display: flex;
+    }
+
+    .fullscreen img {
+      max-width: 95%;
+      max-height: 95%;
+      object-fit: contain;
+    }
+
+    .fullscreen a {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      font-size: 30px;
+      color: white;
+      text-decoration: none;
     }
 
   </style>
@@ -126,58 +189,41 @@
 
 <div class="container">
 
-  <!-- HERO -->
   <div class="hero">
-    <h1>MARTA</h1>
+    <h1>Marta</h1>
     <p>Sabores caseros que enamoran 💛</p>
-    <img src="fotos catalogo\tarta.jpeg">
+    <img src="fotos-catalogo\WhatsApp Image 2026-04-15 at 21.05.06.jpeg">
   </div>
 
-  <!-- DESTACADOS -->
   <h2>Lo más pedido</h2>
   <div class="products">
 
-    <div class="card">
+    <a href="#frutilla" class="card">
       <div class="image">
-        <img src="fotos catalogo\frutilla.jpeg">
+        <img src="fotos-catalogo/frutilla.jpeg">
       </div>
       <h3>Tarta de frutilla</h3>
-      <p>Fresca, dulce y casera.</p>
-      <strong>$13.000</strong><br>
-      
-    </div>
+      <p>$13.000</p>
+    </a>
 
-    <div class="card">
+    <a href="#durazno" class="card">
       <div class="image">
-        <img src="fotos catalogo\durazno-lejos.jpeg">
+        <img src="fotos-catalogo/durazno3.jpeg">
       </div>
       <h3>Tarta de durazno</h3>
-      <p>Clásica y deliciosa.</p>
-      <strong>$13.000</strong><br>
-      
-    </div>
+      <p>$13.000</p>
+    </a>
 
-    <div class="card">
+    <a href="#domingo" class="card">
       <div class="image">
-        <img src="fotos catalogo\domingo2.jpeg">
+        <img src="fotos-catalogo/domingo3.jpeg">
       </div>
       <h3>Torta de los domingos</h3>
-      <p>Ideal para compartir.</p>
-      <strong>$30.000</strong><br>
-    
-    </div>
+      <p>$30.000</p>
+    </a>
 
   </div>
 
-  <!-- GALERÍA -->
-  <h2>Más fotos</h2>
-  <div class="gallery">
-    <img src="fotos catalogo/chocolate.jpeg">
-    <img src="fotos catalogo/pan.jpeg">
-    <video src="fotos catalogo/video-comidas.mp4" controls></video>
-  </div>
-
-  <!-- LISTA -->
   <h2>Lista completa</h2>
   <div class="price-list">
     <div class="price-item"><span>Budín grande</span><span>$10.000</span></div>
@@ -187,13 +233,73 @@
     <div class="price-item"><span>Alfajores x12</span><span>$5.000</span></div>
   </div>
 
-  <!-- CTA -->
   <div class="cta">
     <a class="btn-main" href="https://wa.me/549XXXXXXXXXX?text=Hola!%20quiero%20consultar">
       Consultar por WhatsApp
     </a>
   </div>
 
+</div>
+
+<!-- MODALES -->
+
+<div id="frutilla" class="modal">
+  <div class="modal-content">
+    <a href="#" class="close">&times;</a>
+    <a href="#full-frutilla">
+      <img src="fotos-catalogo/frutilla.jpeg">
+    </a>
+    <h2>Tarta de frutilla</h2>
+    <p>Tarta casera con crema y frutillas frescas.</p>
+    <a class="btn-modal" href="https://wa.me/549XXXXXXXXXX?text=Hola!%20quiero%20la%20tarta%20de%20frutilla">
+      Pedir
+    </a>
+  </div>
+</div>
+
+<div id="durazno" class="modal">
+  <div class="modal-content">
+    <a href="#" class="close">&times;</a>
+    <a href="#full-durazno">
+      <img src="fotos-catalogo/durazno3.jpeg">
+    </a>
+    <h2>Tarta de durazno</h2>
+    <p>Tarta clásica con duraznos dulces.</p>
+    <a class="btn-modal" href="https://wa.me/549XXXXXXXXXX?text=Hola!%20quiero%20la%20tarta%20de%20durazno">
+      Pedir
+    </a>
+  </div>
+</div>
+
+<div id="domingo" class="modal">
+  <div class="modal-content">
+    <a href="#" class="close">&times;</a>
+    <a href="#full-domingo">
+      <img src="fotos-catalogo/domingo3.jpeg">
+    </a>
+    <h2>Torta de los domingos</h2>
+    <p>Ideal para compartir en familia.</p>
+    <a class="btn-modal" href="https://wa.me/549XXXXXXXXXX?text=Hola!%20quiero%20la%20torta%20de%20los%20domingos">
+      Pedir
+    </a>
+  </div>
+</div>
+
+<!-- FULLSCREEN -->
+
+<div id="full-frutilla" class="fullscreen">
+  <a href="#frutilla">&times;</a>
+  <img src="fotoscatalogo/frutilla.jpeg">
+</div>
+
+<div id="full-durazno" class="fullscreen">
+  <a href="#durazno">&times;</a>
+  <img src="fotos-catalogo/durazno3.jpeg">
+</div>
+
+<div id="full-domingo" class="fullscreen">
+  <a href="#domingo">&times;</a>
+  <img src="fotos-catalogo/domingo3.jpeg">
 </div>
 
 </body>
